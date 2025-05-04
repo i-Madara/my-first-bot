@@ -1,5 +1,6 @@
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import filters
 import os, logging
 
 logging.basicConfig(level=logging.INFO)
@@ -47,7 +48,7 @@ def main():
 
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command & ~Filters.reply, anonymous_message))
-    dp.add_handler(MessageHandler(Filters.text & Filters.reply, handle_reply))
+    dp.add_handler(MessageHandler(filters.TEXT & filters.REPLY, handle_reply))
 
     updater.start_polling()
     updater.idle()
