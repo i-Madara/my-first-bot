@@ -47,7 +47,7 @@ def main():
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(MessageHandler(Filters.text & ~Filters.command & ~Filters.reply, anonymous_message))
+    dp.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND & ~filters.REPLY, anonymous_message))  # تعديل هنا
     dp.add_handler(MessageHandler(filters.TEXT & filters.REPLY, handle_reply))
 
     updater.start_polling()
